@@ -9,7 +9,7 @@ Storage accounts should not allow public Blobs
 ## Try with PowerShell
 
 ````powershell
-$definition = New-AzPolicyDefinition -Name "storage-account-file-encryption" -DisplayName "Ensure storage file encryption" -description "Ensures file encryption for storage accounts" -Policy 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.parameters.json' -Mode All
+$definition = New-AzPolicyDefinition -Name "storage-account-public-blob" -DisplayName "Storage accounts should not allow public Blobs" -description "Ensure storage accounts should not allow public Blobs" -Policy 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.parameters.json' -Mode All
 $definition
 $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -PolicyDefinition $definition
 $assignment 
@@ -21,6 +21,6 @@ $assignment
 
 ````cli
 
-az policy definition create --name 'storage-account-file-encryption' --display-name 'Ensure storage file encryption' --description 'Ensures file encryption for storage accounts' --rules 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'storage-account-public-blob' --display-name 'Storage accounts should not allow public Blobs' --description 'Ensure storage accounts should not allow public Blobs' --rules 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/davidokeyode/charis-cloud-azure-policy/master/storage/storage-account-public-blob/azurepolicy.parameters.json' --mode All
 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "storage-account-file-encryption" 
