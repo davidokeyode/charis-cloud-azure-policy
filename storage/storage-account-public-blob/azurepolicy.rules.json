@@ -6,7 +6,7 @@
         "equals": "Microsoft.Storage/storageAccounts"
       },
       {
-        "field": "Microsoft.Storage/storageAccounts/properties.allowBlobPublicAccess",
+        "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
         "notEquals": "false"
       }
     ]
