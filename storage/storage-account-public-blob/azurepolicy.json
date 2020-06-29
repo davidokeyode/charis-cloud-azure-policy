@@ -1,0 +1,44 @@
+{
+    "properties": {
+      "displayName": "Storage accounts should not allow public Blobs",
+      "policyType": "BuiltIn",
+      "mode": "Indexed",
+      "description": "Ensure that storage accounts do not allow creation of public Blobs",
+      "metadata": {
+        "version": "1.1.0",
+        "category": "Storage"
+      },
+      "parameters": {
+        "effect": {
+          "type": "String",
+          "metadata": {
+            "displayName": "Effect",
+            "description": "The effect determines what happens when the policy rule is evaluated to match"
+          },
+          "allowedValues": [
+            "Audit",
+            "Deny",
+            "Disabled"
+          ],
+          "defaultValue": "Audit"
+        }
+      },
+      "policyRule": {
+        "if": {
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.Storage/storageAccounts"
+            },
+            {
+              "field": "Microsoft.Storage/storageAccounts/properties.allowBlobPublicAccess",
+              "notEquals": "false"
+            }
+          ]
+        },
+        "then": {
+          "effect": "[parameters('effect')]"
+        }
+      }
+    }
+  }
