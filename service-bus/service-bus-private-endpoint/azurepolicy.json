@@ -1,9 +1,9 @@
 {
   "properties": {
-    "displayName": "Service Bus namespaces should be using the premium tier",
+    "displayName": "Service Bus namespaces should use private links",
     "policyType": "Custom",
     "mode": "All",
-    "description": "Service Bus namespaces should be using the premium tier",
+    "description": "Audit Service Bus namespaces that do not have at least one approved private endpoint connection. Clients in a virtual network can securely access resources that have private endpoint connections through private links. For more information, visit: https://aka.ms/acr/private-link",
     "metadata": {
       "version": "1.0.0",
       "category": "Service Bus"
@@ -31,8 +31,14 @@
             "equals": "Microsoft.ServiceBus/namespaces"
           },
           {
-            "field": "Microsoft.ServiceBus/namespaces/sku/tier",
-            "notEquals": "Premium"
+            "count": {
+              "field": "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*]",
+              "where": {
+                "field": "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState.status",
+                "equals": "Approved"
+              }
+            },
+            "less": 1
           }
         ]
       },

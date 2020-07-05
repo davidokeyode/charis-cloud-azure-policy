@@ -6,8 +6,14 @@
         "equals": "Microsoft.ServiceBus/namespaces"
       },
       {
-        "field": "Microsoft.ServiceBus/namespaces/sku/tier",
-        "notEquals": "Premium"
+        "count": {
+          "field": "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*]",
+          "where": {
+            "field": "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState.status",
+            "equals": "Approved"
+          }
+        },
+        "less": 1
       }
     ]
   },
