@@ -1,9 +1,9 @@
 {
   "properties": {
-    "displayName": "Service Bus namespaces should be using the premium tier",
+    "displayName": "Service Bus namespaces should use the premium tier",
     "policyType": "Custom",
     "mode": "All",
-    "description": "Service Bus namespaces should be using the premium tier",
+    "description": "Service Bus namespaces should use the premium tier",
     "metadata": {
       "version": "1.0.0",
       "category": "Service Bus"
