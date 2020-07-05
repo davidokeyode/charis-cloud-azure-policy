@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.ServiceBus/namespaces"
+      },
+      {
+        "field": "Microsoft.ServiceBus/namespaces/sku/tier",
+        "notEquals": "Premium"
+      }
+    ]
+  },
+  "then": {
+    "effect": "audit"
+  }
+}

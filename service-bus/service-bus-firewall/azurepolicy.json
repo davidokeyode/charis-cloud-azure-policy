@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "displayName": "Service Bus namespaces should restrict network access",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Network access to Service Bus namespaces should be restricted. Configure IP firewall rules so only applications from allowed networks can access the namespace. To allow connections from specific internet or on-premise clients, access can be granted to traffic from specific Azure virtual networks or to public internet IP address ranges",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Service Bus"
+    },
+    "parameters": {
+      "effect": {
+        "type": "string",
+        "defaultValue": "Audit",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "metadata": {
+          "displayName": "Effect",
+          "description": "The effect determines what happens when the policy rule is evaluated to match"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.ServiceBus/namespaces/networkrulesets"
+          },
+          {
+            "field": "Microsoft.ServiceBus/namespaces/networkrulesets/default.defaultAction",
+            "equals": "Allow"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    }
+  }
+}
