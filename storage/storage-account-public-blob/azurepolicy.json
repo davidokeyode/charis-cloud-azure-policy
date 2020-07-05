@@ -1,11 +1,11 @@
 {
     "properties": {
       "displayName": "Storage accounts should not allow public Blobs",
-      "policyType": "BuiltIn",
+      "policyType": "Custom",
       "mode": "Indexed",
       "description": "Ensure that storage accounts do not allow creation of public Blobs",
       "metadata": {
-        "version": "1.1.0",
+        "version": "1.0.0",
         "category": "Storage"
       },
       "parameters": {
