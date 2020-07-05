@@ -1,9 +1,9 @@
 {
   "properties": {
-    "displayName": "Service Bus namespaces should restrict network access",
+    "displayName": "Service bus namespaces should have firewall rules",
     "policyType": "Custom",
     "mode": "All",
-    "description": "Network access to Service Bus namespaces should be restricted. Configure IP firewall rules so only applications from allowed networks can access the namespace. To allow connections from specific internet or on-premise clients, access can be granted to traffic from specific Azure virtual networks or to public internet IP address ranges",
+    "description": "Audit or deny Service bus namespaces that do not have any IP rules configured and allow all networks by default. Namespaces that have at least one IP rule defined with the virtual network filter enabled are deemed compliant. Namespaces disabling public access are also deemed compliant",
     "metadata": {
       "version": "1.0.0",
       "category": "Service Bus"
